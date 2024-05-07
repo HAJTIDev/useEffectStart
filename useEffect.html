@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Funkcyjne cykle życia</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="03.table.css" />
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- moja aplikacja -->
+    </div>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/babel.js"></script>
+    <script src="react/prop-types.js"></script>
+    <script type="text/babel">
+      const useEffect=React.useEffect;
+      const useState=React.useState;
+      function Example(){
+        useEffect(()=>{
+        console.log('renderowanie <Example/>', Date.now());
+        return ()=>{
+          console.log('odmontowanie <Example/>', Date.now());
+        };
+        },[]);
+        return<p>Przykład</p>;
+        }
+        function ExampleParent(){
+
+        }
+        function ExampleParent(){
+          const[visible,setVisible]=useState(false);
+          return(
+            <div>
+              <button onClick={()=>setVisible(!visible)}>kilknij mnie
+                {visible ? 'ponownie' : ''}</button>
+                {visible ? <Example/> : null}
+            </div>
+          );
+        }
+        ReactDOM.render(<ExampleParent/>,document.getElementById('app'));
+      
+
+    </script>
+  </body>
+</html>
